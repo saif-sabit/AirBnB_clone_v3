@@ -6,6 +6,7 @@ from os import getenv
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
+from flask import jsonify
 app = Flask(__name__)
 app.register_blueprint(app_views)
 app.url_map.strict_slashes = False
@@ -17,6 +18,15 @@ def teardown_appcontext(exception):
     Tears down .
     """
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """
+    return 404 but json
+    """
+    response = jsonify({"error": "Not found"})
+    return jsonify(response)
 
 
 if __name__ == "__main__":
