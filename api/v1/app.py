@@ -2,6 +2,7 @@
 """
 app file
 """
+from os import getenv
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
@@ -19,4 +20,8 @@ def teardown_appcontext(exception):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, threaded=True)
+    host = "0.0.0.0" if not getenv(
+        "HBNB_API_HOST") else getenv("HBNB_API_HOST")
+    port = 5000 if not getenv(
+        "HBNB_API_PORT") else int(getenv("HBNB_API_PORT"))
+    app.run(host=host, port=port, threaded=True)
