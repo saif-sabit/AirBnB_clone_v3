@@ -14,9 +14,8 @@ def api_states_list():
     return Ok
     """
     states = storage.all(State).values()
-    response = []
-    for state in states:
-        response.add(state.to_dict())
+    response = [state.to_dict() for state in states]
+
     return jsonify(response)
 
 
