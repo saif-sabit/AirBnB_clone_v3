@@ -25,7 +25,7 @@ def not_found(error):
     """
     return 404 but json
     """
-    response = jsonify({"error": "Not found"})
+    response = {"error": "Not found"}
     
     return jsonify(response), 404
 
