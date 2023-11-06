@@ -19,7 +19,8 @@ def api_states_list():
     return jsonify(response)
 
 
-@app_views.route('/states/<string:state_id>', methods=['GET'])
+@app_views.route('/states/<string:state_id>', methods=['GET'],
+                 strict_slashes=False)
 def api_states(state_id):
     """
     return state
