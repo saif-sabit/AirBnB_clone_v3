@@ -41,13 +41,13 @@ def api_states_delete(state_id):
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
-    storage.delete(state)
-    storage.save(state)
+    storage.delete()
+    storage.save()
     return jsonify({}), 200
 
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
-def api_states_add(state_id):
+def api_states_add():
     """
     return add state
     """
