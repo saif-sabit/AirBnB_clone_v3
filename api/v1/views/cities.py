@@ -68,7 +68,7 @@ def api_cities_add(state_id):
 
 
 @app_views.route('/cities/<city_id>',
-                 methods=['DELETE'], strict_slashes=False)
+                 methods=['PUT'], strict_slashes=False)
 def api_cities_update(city_id):
     """
     return update city
