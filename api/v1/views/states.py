@@ -32,7 +32,7 @@ def api_states(state_id):
 
 
 @app_views.route('/states/<string:state_id>',
-                methods=['DELETE'],strict_slashes=False)
+                 methods=['DELETE'], strict_slashes=False)
 def api_states_delete(state_id):
     """
     return state
@@ -60,7 +60,8 @@ def api_states_add(state_id):
     return jsonify(new_state.to_dict()), 201
 
 
-@app_views.route('/states/<string:state_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/states/<string:state_id>',
+                 methods=['PUT'], strict_slashes=False)
 def api_states_update(state_id):
     """
     return update state
@@ -76,4 +77,3 @@ def api_states_update(state_id):
             setattr(state, key, value)
     state.save()
     return jsonify(state.to_dict()), 200
-
